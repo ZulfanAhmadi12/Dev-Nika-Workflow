@@ -54,6 +54,49 @@ Every role follows one rule before reading a PDF, DOCX, XLSX or PPTX (`reference
 
 Why: you pay per token, and anything read stays in context and is re-sent on every later turn. A PDF page read directly costs its text plus a page image, roughly 2–3× its plain-text size. Converting once and reusing the Markdown is where the real saving comes from. MCP tool definitions also occupy context on every turn even when unused, which is why a CLI converter is preferred.
 
+## Supporting skills
+
+The source of truth is [`references/workflow-rules.md` § 5](plugins/dev-flow/references/workflow-rules.md#5-supporting-skills-only-with-user-approval); this section only summarizes it. In short:
+
+- Each role proposes its supporting skills **once, at the start**, in one message: the skill, the step where it is used, and a reason specific to this plan.
+- You approve all, some or none. **Nothing runs without approval**; a declined skill is replaced by the same checks done by hand, and is not proposed again without a new reason.
+- Only skills that are **installed in the session** are proposed. A project can add or forbid skills in its config (`.claude/workflow.md` § Supporting skills).
+
+| Role | Skill | When |
+|---|---|---|
+| Plan | `design:ux-copy` | The plan writes user-facing copy (labels, errors, empty states, confirmations) |
+| Implement | `superpowers:test-driven-development` | Bug fixes, regression tests that must fail first, security acceptance criteria |
+| Implement | `superpowers:systematic-debugging` | Mid-way, when a test fails and the root cause is unclear after one check |
+| Implement | `superpowers:verification-before-completion` | Before claiming gate 2 (Implementation done) |
+| Implement | `code-review` | Before hand-off, for tier B plans and tier C changes |
+| Review | `code-review` | First pass for tier A (tier B: the implementer already ran it); level chosen from size and risk |
+| Review | `security-review` | Tier A, or a B plan raised to A because the range touches tier A areas |
+| Review | `design:accessibility-review` | The range changes screens or interactive components |
+| QA | `design:accessibility-review` | UI scenarios |
+| QA | `design:ux-copy` | Scenarios with user-facing copy |
+| QA | `superpowers:verification-before-completion` | Before claiming QA passed |
+| QA | `superpowers:systematic-debugging` | Mid-way, when a scenario fails and the root cause is unclear |
+
+The lead proposes no supporting skills of its own; each dispatched session proposes its own.
+
+### Where they come from
+
+dev-flow does **not** bundle any of these skills. Checked on the computer where dev-flow was written (`claude plugin list`, Claude Code 2.1.312):
+
+| Skills | Provided by | Confirmed install source |
+|---|---|---|
+| `superpowers:*` | The **Superpowers** plugin (`superpowers`) | Installed as `superpowers@synced`, i.e. synced from claude.ai (Anthropic Directory). No CLI marketplace name was shown, so no install command is given here: find it in the Anthropic Directory on claude.ai or with `/plugin` in Claude Code. |
+| `design:*` | The **Design** plugin (`design`) | Installed as `design@synced`, same as above. |
+| `code-review`, `security-review` | Built into Claude Code (no plugin) | Present without a namespace in the session's skill list. |
+
+Do not confuse the built-in `code-review` with `engineering:code-review` from the Engineering plugin; dev-flow means the built-in one.
+
+Without these plugins dev-flow still works: the roles simply propose fewer skills and do the same checks by hand.
+
+### Not used with dev-flow
+
+These conflict with plan files, role separation or dev-flow's git rules, so the roles never propose them: `superpowers:brainstorming`, `superpowers:writing-plans`, `superpowers:executing-plans`, `superpowers:subagent-driven-development`, `superpowers:using-git-worktrees`, `superpowers:finishing-a-development-branch`, `superpowers:requesting-code-review`. If another plugin tells Claude to run a skill automatically (for example a SessionStart message), dev-flow's approval rule wins.
+
 ## Install locally (this computer)
 
 ```bash
