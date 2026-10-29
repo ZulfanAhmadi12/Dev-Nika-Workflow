@@ -1,6 +1,6 @@
 # Adopting Dev-Nika-Workflow in a project
 
-Do these steps once per project. Install the plugin first (README.md, "Install locally" on this computer, or "Install from GitHub" elsewhere).
+Do these steps once per project. Install the plugin first (README.md, "Install").
 
 ## 1. Make sure the branches exist
 
@@ -64,7 +64,7 @@ This project uses the Dev-Nika-Workflow plugin; its config is `.claude/workflow.
 
 ## 6. Optional: share with teammates
 
-The plugin is published at `ZulfanAhmadi12/dev-Claude-Workflow` (README.md, "Install from GitHub"). Add this to the project's `.claude/settings.json` so Claude Code offers the marketplace and plugin to everyone who opens the project:
+The plugin is published at `ZulfanAhmadi12/dev-Claude-Workflow` (README.md, "Install"). Add this to the project's `.claude/settings.json` so Claude Code offers the marketplace and plugin to everyone who opens the project:
 
 ```json
 {
@@ -79,7 +79,7 @@ The plugin is published at `ZulfanAhmadi12/dev-Claude-Workflow` (README.md, "Ins
 }
 ```
 
-Each teammate needs read access to the private repository and must sign in on their computer first (`gh auth login`, or git credentials / an SSH key that can clone it).
+The repository is public, so no GitHub sign-in is needed to install it.
 
 ## 7. First run
 

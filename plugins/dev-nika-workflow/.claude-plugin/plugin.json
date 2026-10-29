@@ -1,5 +1,13 @@
 {
   "name": "dev-nika-workflow",
   "displayName": "Dev-Nika-Workflow",
-  "description": "Multi-role development workflow: a team lead coordinates, a planner writes plans and contracts, an implementer builds with per-plan permission, an independent reviewer reviews, and QA verifies. Configured per project through .claude/workflow.md."
+  "version": "0.1.0",
+  "description": "Multi-role development workflow: a team lead coordinates, a planner writes plans and contracts, an implementer builds with per-plan permission, an independent reviewer reviews, and QA verifies. Configured per project through .claude/workflow.md.",
+  "author": {
+    "name": "Zulfan Ahmadi"
+  },
+  "homepage": "https://github.com/ZulfanAhmadi12/dev-Claude-Workflow",
+  "repository": "https://github.com/ZulfanAhmadi12/dev-Claude-Workflow",
+  "license": "MIT",
+  "keywords": ["workflow", "planning", "code-review", "qa", "multi-session", "roles"]
 }

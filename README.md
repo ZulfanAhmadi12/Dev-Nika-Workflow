@@ -21,7 +21,7 @@ This repository is both the **marketplace** (`dev-nika-workflow-tools`) and the 
 ```
 .claude-plugin/marketplace.json        marketplace "dev-nika-workflow-tools", one plugin entry
 plugins/dev-nika-workflow/
-  .claude-plugin/plugin.json           plugin manifest (name + description, no version yet)
+  .claude-plugin/plugin.json           plugin manifest (name, displayName, version, author, license)
   skills/{lead,plan,implement,review,qa}/SKILL.md
   agents/code-scout.md
   references/workflow-rules.md         the portable rules every skill reads
@@ -29,8 +29,10 @@ plugins/dev-nika-workflow/
   templates/plan-template.md
   templates/review-template.md
   templates/workflow-config.template.md
+  README.md, LICENSE                   short listing README and MIT license for the plugin folder
 README.md                              this file
 ADOPT.md                               how to adopt the workflow in a project
+LICENSE                                MIT
 ```
 
 ## How it is configured per project
@@ -97,25 +99,42 @@ Without these plugins Dev-Nika-Workflow still works: the roles simply propose fe
 
 These conflict with plan files, role separation or Dev-Nika-Workflow's git rules, so the roles never propose them: `superpowers:brainstorming`, `superpowers:writing-plans`, `superpowers:executing-plans`, `superpowers:subagent-driven-development`, `superpowers:using-git-worktrees`, `superpowers:finishing-a-development-branch`, `superpowers:requesting-code-review`. If another plugin tells Claude to run a skill automatically (for example a SessionStart message), Dev-Nika-Workflow's approval rule wins.
 
-## Install locally (this computer)
+## Install
 
-```bash
-claude plugin marketplace add "C:\Zulfan Ahmadi\Code Project\dev-flow"
+The repository is public at [ZulfanAhmadi12/dev-Claude-Workflow](https://github.com/ZulfanAhmadi12/dev-Claude-Workflow). The repository name differs from the plugin name: the plugin is `dev-nika-workflow` and the marketplace is `dev-nika-workflow-tools`, so the commands are `/dev-nika-workflow:*`.
+
+Inside Claude Code:
+
+```
+/plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
+/plugin install dev-nika-workflow@dev-nika-workflow-tools
 ```
 
-(The folder keeps its old name; only the plugin and marketplace were renamed.) If this computer still has the marketplace registered under its old name from before the rename, remove that first:
+Or from a terminal:
 
 ```bash
-claude plugin marketplace remove dev-flow-tools
+claude plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
 ```
 
 ```bash
 claude plugin install dev-nika-workflow@dev-nika-workflow-tools
 ```
 
-Restart Claude Code (or start a new session) and type `/dev-nika-workflow:` to see the commands.
+Restart Claude Code (or start a new session) and type `/dev-nika-workflow:` to see the commands. Then follow [ADOPT.md](ADOPT.md) in each project.
 
-`plugin.json` has no `version` field on purpose. With a version set, installs stay on the cached copy until the version is bumped. After editing the plugin, refresh the installed copy and start a new session:
+If you added a local clone as the marketplace earlier, remove it first, because both use the name `dev-nika-workflow-tools`:
+
+```bash
+claude plugin marketplace remove dev-nika-workflow-tools
+```
+
+To have a project offer the plugin to everyone who opens it, declare the marketplace and plugin in that project's `.claude/settings.json` (`extraKnownMarketplaces` and `enabledPlugins`); see ADOPT.md step 6.
+
+## Updates and versions
+
+`plugins/dev-nika-workflow/.claude-plugin/plugin.json` has a `version` (currently `0.1.0`). Installed copies stay on the cached version until that number changes, so **every release must bump `version`** (semver: patch for wording fixes, minor for new rules or skills, major for changes that break existing project configs). Pushing commits without a bump does not reach users.
+
+To pick up a new release:
 
 ```bash
 claude plugin marketplace update dev-nika-workflow-tools
@@ -125,64 +144,31 @@ claude plugin marketplace update dev-nika-workflow-tools
 claude plugin update dev-nika-workflow@dev-nika-workflow-tools
 ```
 
-## Test while editing
+## Develop locally
 
-Load the plugin straight from the folder for one session, without installing it:
+Clone the repository, then load the plugin straight from the folder for one session, without installing it:
 
 ```bash
-claude --plugin-dir "C:\Zulfan Ahmadi\Code Project\dev-flow\plugins\dev-nika-workflow"
+claude --plugin-dir "<path-to-clone>/plugins/dev-nika-workflow"
 ```
 
-Validate the manifests, skills and agent:
+Or register the clone as the marketplace (instead of the GitHub one) and install from it:
 
 ```bash
-claude plugin validate "C:\Zulfan Ahmadi\Code Project\dev-flow\plugins\dev-nika-workflow"
+claude plugin marketplace add "<path-to-clone>"
+```
+
+Validate the plugin and the marketplace before every release:
+
+```bash
+claude plugin validate "<path-to-clone>/plugins/dev-nika-workflow"
 ```
 
 ```bash
-claude plugin validate "C:\Zulfan Ahmadi\Code Project\dev-flow"
+claude plugin validate "<path-to-clone>"
 ```
 
 Add `--strict` to treat warnings as errors.
-
-## Install from GitHub (other computers, teammates)
-
-The repository is published privately at [ZulfanAhmadi12/dev-Claude-Workflow](https://github.com/ZulfanAhmadi12/dev-Claude-Workflow). The repository name differs from the plugin name: the plugin is `dev-nika-workflow` and the marketplace is `dev-nika-workflow-tools`, so the commands are `/dev-nika-workflow:*`.
-
-1. **Get git access first.** The repository is private, so the computer must be able to clone it before Claude Code can add it. Sign in with the GitHub CLI (or set up an SSH key or git credential helper that has access):
-
-   ```bash
-   gh auth login
-   ```
-
-   Check it with `git ls-remote https://github.com/ZulfanAhmadi12/dev-Claude-Workflow.git`. A teammate also needs to be added as a collaborator on the repository.
-2. **Add the marketplace and install the plugin.** Inside Claude Code:
-
-   ```
-   /plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
-   /plugin install dev-nika-workflow@dev-nika-workflow-tools
-   ```
-
-   Or from a terminal:
-
-   ```bash
-   claude plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
-   ```
-
-   ```bash
-   claude plugin install dev-nika-workflow@dev-nika-workflow-tools
-   ```
-
-3. **On a computer that already added the local folder**, remove the local marketplace first, because both use the name `dev-nika-workflow-tools`:
-
-   ```bash
-   claude plugin marketplace remove dev-nika-workflow-tools
-   ```
-
-   Then run step 2.
-4. **Publishing changes:** commit in this repository and push to `main`; other computers pick it up with `claude plugin marketplace update dev-nika-workflow-tools` and `claude plugin update dev-nika-workflow@dev-nika-workflow-tools`.
-5. Once other people use it, add `"version": "0.1.0"` to `plugins/dev-nika-workflow/.claude-plugin/plugin.json` and bump it on every release, so their installs update deliberately rather than on every commit.
-6. To have a project offer the plugin to teammates automatically, declare the marketplace and plugin in that project's `.claude/settings.json` (`extraKnownMarketplaces` and `enabledPlugins`); see ADOPT.md step 6.
 
 ## Where the rules came from
 
