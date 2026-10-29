@@ -1,0 +1,16 @@
+{
+  "name": "dev-flow-tools",
+  "owner": {
+    "name": "Zulfan Ahmadi"
+  },
+  "metadata": {
+    "description": "Multi-role development workflow (lead, planner, implementer, reviewer, QA) for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "dev-flow",
+      "source": "./plugins/dev-flow",
+      "description": "Separate-session roles for planning, implementing, reviewing and QA-ing work, with risk tiers, review independence and per-plan permission."
+    }
+  ]
+}
