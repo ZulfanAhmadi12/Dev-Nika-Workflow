@@ -101,8 +101,6 @@ These conflict with plan files, role separation or Dev-Nika-Workflow's git rules
 
 ## Install
 
-The repository is public at [ZulfanAhmadi12/dev-Claude-Workflow](https://github.com/ZulfanAhmadi12/dev-Claude-Workflow). The repository name differs from the plugin name: the plugin is `dev-nika-workflow` and the marketplace is `dev-nika-workflow-tools`, so the commands are `/dev-nika-workflow:*`.
-
 Inside Claude Code:
 
 ```
