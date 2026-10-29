@@ -42,6 +42,18 @@ Every skill first reads two files:
 
 If the project has no `.claude/workflow.md`, the skill stops and offers to create it by interviewing you. See [ADOPT.md](ADOPT.md).
 
+## Reading documents
+
+Every role follows one rule before reading a PDF, DOCX, XLSX or PPTX (`references/workflow-rules.md` § 9):
+
+1. Referenced again → convert it once to Markdown with a CLI tool (`markitdown`, `pandoc`, `pdftotext`), store it next to the original (or where the config's **Converted documents** section says), spot-check a table, and read the Markdown from then on.
+2. One-off read → search first, then read only the pages or sections needed.
+3. Meaning depends on visuals (scans, charts, diagrams, layout, mockups) → read the original pages. Correctness beats cost.
+4. More than ~20 pages, or large logs → a subagent reads them and returns a summary.
+5. Prefer a CLI converter over adding an MCP server.
+
+Why: you pay per token, and anything read stays in context and is re-sent on every later turn. A PDF page read directly costs its text plus a page image, roughly 2–3× its plain-text size. Converting once and reusing the Markdown is where the real saving comes from. MCP tool definitions also occupy context on every turn even when unused, which is why a CLI converter is preferred.
+
 ## Install locally (this computer)
 
 ```bash

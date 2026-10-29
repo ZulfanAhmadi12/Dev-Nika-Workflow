@@ -14,6 +14,7 @@ This session holds the **team lead** role and also acts as planner: $ARGUMENTS
 1. Read `${CLAUDE_PLUGIN_ROOT}/references/workflow-rules.md` (the portable rules; "rule N" below means its section 2).
 2. Read `${CLAUDE_PROJECT_DIR}/.claude/workflow.md` (the **config**). If it does not exist, stop and follow `${CLAUDE_PLUGIN_ROOT}/references/config-interview.md`, using the template `${CLAUDE_PLUGIN_ROOT}/templates/workflow-config.template.md`.
 3. Read the instruction files listed in config § Project. Chat in the config's chat language.
+4. Before reading any PDF, DOCX, XLSX or PPTX, follow rules § 9 (Reading documents).
 
 The team lead works in the main checkout on the integration branch (rules § 6). For planner work, follow `/dev-flow:plan`.
 

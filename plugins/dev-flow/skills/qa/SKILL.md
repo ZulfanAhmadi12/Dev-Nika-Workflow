@@ -16,6 +16,7 @@ QA permission comes from the same plan's implementation permission (rule 1). The
 1. Read `${CLAUDE_PLUGIN_ROOT}/references/workflow-rules.md` (the portable rules; "rule N" below means its section 2).
 2. Read `${CLAUDE_PROJECT_DIR}/.claude/workflow.md` (the **config**). If it does not exist, stop and follow `${CLAUDE_PLUGIN_ROOT}/references/config-interview.md`, using the template `${CLAUDE_PLUGIN_ROOT}/templates/workflow-config.template.md`.
 3. Read the instruction files listed in config § Project. Chat in the config's chat language; write results in its docs language.
+4. Before reading any PDF, DOCX, XLSX or PPTX, follow rules § 9 (Reading documents).
 
 ## 0. Supporting skills
 

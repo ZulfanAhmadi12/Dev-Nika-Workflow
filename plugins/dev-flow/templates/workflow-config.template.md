@@ -45,6 +45,14 @@ Write "none" for any the project does not have; the skills skip the matching ste
 - Other docs the implementer may update: <e.g. docs/user-manual/**, or none>
 - Docs map / reading routes: <e.g. docs/README.md, or none>
 
+## Converted documents
+
+Where Markdown conversions of non-text files (PDF, DOCX, XLSX, PPTX) are stored, and which converter this project uses (workflow rules § 9).
+
+- Storage: <e.g. next to the original, same name with .md | docs/converted/>
+- Converter: <e.g. markitdown; pandoc for DOCX; pdftotext for text PDFs>
+- Install note: <e.g. "uv tool install markitdown", or none>
+
 ## Risk tier A
 
 A plan is tier A if it touches any of these. Everything else is tier B (or C for typo/one-file/docs fixes).

@@ -123,6 +123,16 @@ Then the result in two or three sentences, what was not done or not verified and
 8. Report results, the commands run, and any verification that could not run and why.
 9. Mechanical code search with a clear target may go to the `dev-flow:code-scout` subagent (cheap model). Searches that touch tier A areas, or that need judgement about relevance, stay on the session model (`Explore`).
 
-## 9. Definition of Done
+## 9. Reading documents
+
+Before reading a non-text file (PDF, DOCX, XLSX, PPTX):
+
+1. If it will be referenced again, convert it once to Markdown with a CLI tool (e.g. `markitdown`; `pandoc` for DOCX; `pdftotext` for text PDFs). Store it in the project's docs next to the original, or where config § Converted documents says, with the converter the config names. Spot-check one or two tables against the original, and read the Markdown from then on.
+2. If it is a one-off read, read only the pages or sections needed (search first, then read the range).
+3. If meaning depends on visuals (scanned PDFs without a text layer, charts, diagrams, layout, design mockups), read the original pages directly. Correctness beats cost.
+4. Send reads of more than ~20 pages, or large logs, to a subagent that returns a summary, so the main session's context stays small.
+5. Prefer a CLI converter over adding an MCP server. MCP tool definitions occupy context on every turn even when unused.
+
+## 10. Definition of Done
 
 A task passes four gates in order: **1. Plan ready** (planner), **2. Implementation done** (implementer), **3. Review done** (reviewer, a different session from the implementer), **4. QA done** (implementer). It is done only when all four pass. A tier C task needs gate 2 and the automated gates of gate 4. Each gate's checklist is in its role skill.
