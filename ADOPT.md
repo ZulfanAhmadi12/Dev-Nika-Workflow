@@ -1,6 +1,6 @@
 # Adopting dev-flow in a project
 
-Do these steps once per project. Install the plugin first (README.md, "Install locally").
+Do these steps once per project. Install the plugin first (README.md, "Install locally" on this computer, or "Install from GitHub" elsewhere).
 
 ## 1. Make sure the branches exist
 
@@ -64,13 +64,13 @@ This project uses the dev-flow plugin; its config is `.claude/workflow.md`.
 
 ## 6. Optional: share with teammates
 
-When the plugin lives in a GitHub repository (README.md, "Move to a private GitHub repository later"), add this to the project's `.claude/settings.json` so Claude Code offers the marketplace and plugin to everyone who opens the project:
+The plugin is published at `ZulfanAhmadi12/dev-Claude-Workflow` (README.md, "Install from GitHub"). Add this to the project's `.claude/settings.json` so Claude Code offers the marketplace and plugin to everyone who opens the project:
 
 ```json
 {
   "extraKnownMarketplaces": {
     "dev-flow-tools": {
-      "source": { "source": "github", "repo": "<owner>/dev-flow" }
+      "source": { "source": "github", "repo": "ZulfanAhmadi12/dev-Claude-Workflow" }
     }
   },
   "enabledPlugins": {
@@ -79,7 +79,7 @@ When the plugin lives in a GitHub repository (README.md, "Move to a private GitH
 }
 ```
 
-Each teammate needs read access to the private repository.
+Each teammate needs read access to the private repository and must sign in on their computer first (`gh auth login`, or git credentials / an SSH key that can clone it).
 
 ## 7. First run
 

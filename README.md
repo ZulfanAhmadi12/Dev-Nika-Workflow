@@ -96,36 +96,44 @@ claude plugin validate "C:\Zulfan Ahmadi\Code Project\dev-flow"
 
 Add `--strict` to treat warnings as errors.
 
-## Move to a private GitHub repository later
+## Install from GitHub (other computers, teammates)
 
-1. Create an empty **private** repository on GitHub, for example `<owner>/dev-flow`.
-2. Push this repository to it:
+The repository is published privately at [ZulfanAhmadi12/dev-Claude-Workflow](https://github.com/ZulfanAhmadi12/dev-Claude-Workflow). The repository name differs from the plugin name: the plugin stays `dev-flow` and the marketplace stays `dev-flow-tools`, so the commands stay `/dev-flow:*`.
+
+1. **Get git access first.** The repository is private, so the computer must be able to clone it before Claude Code can add it. Sign in with the GitHub CLI (or set up an SSH key or git credential helper that has access):
 
    ```bash
-   git -C "C:\Zulfan Ahmadi\Code Project\dev-flow" remote add origin git@github.com:<owner>/dev-flow.git
+   gh auth login
    ```
 
-   ```bash
-   git -C "C:\Zulfan Ahmadi\Code Project\dev-flow" push -u origin main
+   Check it with `git ls-remote https://github.com/ZulfanAhmadi12/dev-Claude-Workflow.git`. A teammate also needs to be added as a collaborator on the repository.
+2. **Add the marketplace and install the plugin.** Inside Claude Code:
+
+   ```
+   /plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
+   /plugin install dev-flow@dev-flow-tools
    ```
 
-3. On each computer, replace the local marketplace with the GitHub one (the marketplace name stays `dev-flow-tools`):
+   Or from a terminal:
 
    ```bash
-   claude plugin marketplace remove dev-flow-tools
-   ```
-
-   ```bash
-   claude plugin marketplace add <owner>/dev-flow
+   claude plugin marketplace add ZulfanAhmadi12/dev-Claude-Workflow
    ```
 
    ```bash
    claude plugin install dev-flow@dev-flow-tools
    ```
 
-   A private repository needs git access on that computer (an SSH key or a credential helper that can clone it).
-4. Once other people use it, add `"version": "0.1.0"` to `plugins/dev-flow/.claude-plugin/plugin.json` and bump it on every release, so their installs update deliberately rather than on every commit.
-5. To have a project offer the plugin to teammates automatically, declare the marketplace and plugin in that project's `.claude/settings.json` (`extraKnownMarketplaces` and `enabledPlugins`); see ADOPT.md step 6.
+3. **On a computer that already added the local folder**, remove the local marketplace first, because both use the name `dev-flow-tools`:
+
+   ```bash
+   claude plugin marketplace remove dev-flow-tools
+   ```
+
+   Then run step 2.
+4. **Publishing changes:** commit in this repository and push to `main`; other computers pick it up with `claude plugin marketplace update dev-flow-tools` and `claude plugin update dev-flow@dev-flow-tools`.
+5. Once other people use it, add `"version": "0.1.0"` to `plugins/dev-flow/.claude-plugin/plugin.json` and bump it on every release, so their installs update deliberately rather than on every commit.
+6. To have a project offer the plugin to teammates automatically, declare the marketplace and plugin in that project's `.claude/settings.json` (`extraKnownMarketplaces` and `enabledPlugins`); see ADOPT.md step 6.
 
 ## Where the rules came from
 
