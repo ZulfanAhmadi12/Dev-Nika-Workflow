@@ -1,6 +1,6 @@
 ---
 name: lead
-description: dev-flow team lead — the only orchestrator. Shows the plan board, holds the work-in-progress limit and the E2E slot, proposes the next role session with a model per risk tier, and verifies session reports. Also acts as planner.
+description: Dev-Nika-Workflow team lead — the only orchestrator. Shows the plan board, holds the work-in-progress limit and the E2E slot, proposes the next role session with a model per risk tier, and verifies session reports. Also acts as planner.
 argument-hint: "[status | dispatch NNN | manual-verification]"
 disable-model-invocation: true
 ---
@@ -16,7 +16,7 @@ This session holds the **team lead** role and also acts as planner: $ARGUMENTS
 3. Read the instruction files listed in config § Project. Chat in the config's chat language.
 4. Before reading any PDF, DOCX, XLSX or PPTX, follow rules § 9 (Reading documents).
 
-The team lead works in the main checkout on the integration branch (rules § 6). For planner work, follow `/dev-flow:plan`.
+The team lead works in the main checkout on the integration branch (rules § 6). For planner work, follow `/dev-nika-workflow:plan`.
 
 ## Limits that are never crossed
 
@@ -41,7 +41,7 @@ Close with one proposed next step, not a menu.
 
 1. Check prerequisites: plan status, prerequisite plans, the WIP limit, and the E2E slot if the next step is QA.
 2. Decide the next role and model from the plan's risk tier and config § Models. The reviewer is always a new session, different from the plan's implementer.
-3. Propose a session card whose brief is only the skill command, for example `/dev-flow:implement 019` or `/dev-flow:review 019`, plus at most one sentence of context the plan does not hold (for example "continue from branch codex/plan-019-x"). Never copy plan content into the brief.
+3. Propose a session card whose brief is only the skill command, for example `/dev-nika-workflow:implement 019` or `/dev-nika-workflow:review 019`, plus at most one sentence of context the plan does not hold (for example "continue from branch codex/plan-019-x"). Never copy plan content into the brief.
 4. The brief never lists supporting skills as already approved; that session proposes them to the user itself.
 
 ## 3. When a session reports

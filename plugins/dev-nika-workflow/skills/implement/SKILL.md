@@ -1,6 +1,6 @@
 ---
 name: implement
-description: dev-flow implementer — implement a plan at Ready for implementation, or fix the findings of a review round, until it is ready for an independent review.
+description: Dev-Nika-Workflow implementer — implement a plan at Ready for implementation, or fix the findings of a review round, until it is ready for an independent review.
 argument-hint: "<plan number, e.g. 019> [fix rK]"
 disable-model-invocation: true
 ---
@@ -43,7 +43,7 @@ Use only the approved ones. Without approval, do the same steps by hand.
 
 - A worktree under the config's worktree dir, on a branch named per the config's implementer branch pattern, from the latest integration branch. If the plan already has a branch from an external implementer (config § External implementer), branch from its tip, then `git rebase <integration branch>` (rules § 6).
 - `git status --short`: existing changes belong to the user; keep them.
-- Tests use the per-plan isolation in config § Test isolation. Never touch the shared dev environment in config § E2E environment; resets happen only while holding the E2E slot in `/dev-flow:qa`.
+- Tests use the per-plan isolation in config § Test isolation. Never touch the shared dev environment in config § E2E environment; resets happen only while holding the E2E slot in `/dev-nika-workflow:qa`.
 - Plan status (who, base, **Implementation**) is updated in the first code commit, not a separate docs commit (rule 5).
 
 ## 3. Read before writing code
@@ -51,7 +51,7 @@ Use only the approved ones. Without approval, do the same steps by hand.
 - The plan with every P-n answer under Open questions; the contracts it cites.
 - Lessons learned: only the section for this area.
 - The rows of config § Area-specific reading that match the files you will touch, and any build notes in config § Branches.
-- Mechanical searches may go to the `dev-flow:code-scout` subagent; searches in tier A areas stay on the session model (`Explore`).
+- Mechanical searches may go to the `dev-nika-workflow:code-scout` subagent; searches in tier A areas stay on the session model (`Explore`).
 - State scope-affecting assumptions. If a requirement is unclear, contradictory or impossible: write it under the plan's **Open questions** and stop on that item.
 
 ## 4. During implementation
@@ -85,4 +85,4 @@ If `superpowers:verification-before-completion` was approved, run it before tick
 
 Plan status **Review**, the commit range, Tasks and the feature catalog go into the last code commit (no separate "record the commit" commit; the range may be written as `<base>..HEAD` of this branch). Then `git rebase <integration branch>` and confirm `git merge-base --is-ancestor <integration branch> HEAD`. Never push.
 
-End with the report header (rules § 7), then one line for the user: "Plan NNN is ready for review. Open a **new** reviewer session and run `/dev-flow:review NNN`." This session never reviews its own code, not even through a subagent.
+End with the report header (rules § 7), then one line for the user: "Plan NNN is ready for review. Open a **new** reviewer session and run `/dev-nika-workflow:review NNN`." This session never reviews its own code, not even through a subagent.

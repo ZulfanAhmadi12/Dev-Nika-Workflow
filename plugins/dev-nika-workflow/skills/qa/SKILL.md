@@ -1,6 +1,6 @@
 ---
 name: qa
-description: dev-flow QA (implementer stage) — automated gates, then E2E over the plan's QA scenarios after a "Go to QA" verdict, until QA passed.
+description: Dev-Nika-Workflow QA (implementer stage) — automated gates, then E2E over the plan's QA scenarios after a "Go to QA" verdict, until QA passed.
 argument-hint: "<plan number, e.g. 016>"
 disable-model-invocation: true
 ---

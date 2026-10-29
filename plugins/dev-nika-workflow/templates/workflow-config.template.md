@@ -1,6 +1,6 @@
 # Workflow config — <project name>
 
-Project config for the dev-flow plugin. Every dev-flow skill reads this file first. Keep the section headings as they are; the skills look them up by name. Write "none" for a section that does not apply instead of deleting it.
+Project config for the Dev-Nika-Workflow plugin. Every Dev-Nika-Workflow skill reads this file first. Keep the section headings as they are; the skills look them up by name. Write "none" for a section that does not apply instead of deleting it.
 
 ## Project
 

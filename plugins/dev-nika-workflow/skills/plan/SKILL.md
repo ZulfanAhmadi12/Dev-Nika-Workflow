@@ -1,6 +1,6 @@
 ---
 name: plan
-description: dev-flow planner — agree a problem statement, write requirements, decision records, contract changes and a plan until it is Ready for implementation, or answer a plan's Open questions with the user.
+description: Dev-Nika-Workflow planner — agree a problem statement, write requirements, decision records, contract changes and a plan until it is Ready for implementation, or answer a plan's Open questions with the user.
 argument-hint: "<new topic | plan number to continue>"
 disable-model-invocation: true
 ---
@@ -70,4 +70,4 @@ In the main checkout (rules § 6): `git status --short`, then `git add -- <path>
 
 ## 9. Hand-off
 
-Start with the report header (rules § 7), then one line: "Plan NNN ready (tier X)." If this session is also team lead, go on to dispatch in `/dev-flow:lead`; otherwise name the command `/dev-flow:implement NNN` for an implementer session. Never rewrite the plan into a prompt.
+Start with the report header (rules § 7), then one line: "Plan NNN ready (tier X)." If this session is also team lead, go on to dispatch in `/dev-nika-workflow:lead`; otherwise name the command `/dev-nika-workflow:implement NNN` for an implementer session. Never rewrite the plan into a prompt.

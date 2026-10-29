@@ -1,5 +1,5 @@
 {
-  "name": "dev-flow-tools",
+  "name": "dev-nika-workflow-tools",
   "owner": {
     "name": "Zulfan Ahmadi"
   },
@@ -8,8 +8,8 @@
   },
   "plugins": [
     {
-      "name": "dev-flow",
-      "source": "./plugins/dev-flow",
+      "name": "dev-nika-workflow",
+      "source": "./plugins/dev-nika-workflow",
       "description": "Separate-session roles for planning, implementing, reviewing and QA-ing work, with risk tiers, review independence and per-plan permission."
     }
   ]

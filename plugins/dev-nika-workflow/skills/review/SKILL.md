@@ -1,6 +1,6 @@
 ---
 name: review
-description: dev-flow reviewer — independently review one plan's implementation against the plan, the contracts and the project rules, then write the review file with a verdict.
+description: Dev-Nika-Workflow reviewer — independently review one plan's implementation against the plan, the contracts and the project rules, then write the review file with a verdict.
 argument-hint: "<plan number, e.g. 019>"
 disable-model-invocation: true
 ---
@@ -74,6 +74,6 @@ Commit only the reviews dir, `git rebase <integration branch>`, confirm `git mer
 
 End with the report header (rules § 7), then one line for the user:
 
-- Fix first → "Run `/dev-flow:implement NNN fix rK` in the implementer session."
-- Go to QA → "Run `/dev-flow:qa NNN` in the implementer session when the E2E slot is free."
+- Fix first → "Run `/dev-nika-workflow:implement NNN fix rK` in the implementer session."
+- Go to QA → "Run `/dev-nika-workflow:qa NNN` in the implementer session when the E2E slot is free."
 - Any "Needs planner decision" → name the finding numbers for the planner session.
