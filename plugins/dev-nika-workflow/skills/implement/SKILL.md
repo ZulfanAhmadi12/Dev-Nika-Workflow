@@ -27,7 +27,8 @@ After reading the plan (step 1) and before writing code, propose supporting skil
 - `superpowers:test-driven-development`: bug fixes, regression tests that must fail first, or security acceptance criteria;
 - `superpowers:systematic-debugging`: proposed mid-way, when a test fails and the root cause is unclear;
 - `superpowers:verification-before-completion`: before claiming gate 2;
-- `code-review`: before hand-off for tier B plans and tier C changes (rule 9).
+- `code-review`: before hand-off for tier B plans and tier C changes (rule 9);
+- `dataviz`: before writing chart or KPI-tile code, with the palette taken from the project's design system (rules § 5).
 
 Use only the approved ones. Without approval, do the same steps by hand.
 

@@ -42,6 +42,7 @@ Propose to the user once (rules § 5), each with a reason specific to this range
 - `code-review` (tier A; for B the implementer already ran it) at a level chosen from the range's size and risk (e.g. `medium` for a small UI change, `high` for a business flow, `xhigh` for security-sensitive code). Give the commit/file count as the reason for the level.
 - `security-review` for tier A, including a B plan raised to A in step 1b; name the files that make it necessary.
 - `design:accessibility-review` when the range changes screens or interactive components.
+- `design:design-critique` when the range adds or reworks a dashboard or information-dense screen; translate its grades into the review's severity scale (rules § 5).
 
 Skill output is **material, not findings**: verify every item against the code before it goes into the review file. A declined skill is replaced by the same checks done by hand in step 4.
 

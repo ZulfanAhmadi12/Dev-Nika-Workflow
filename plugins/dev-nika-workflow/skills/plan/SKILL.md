@@ -20,7 +20,7 @@ The planner writes no application code, tests, migrations, seeds, config or depe
 
 ## 0. Supporting skills
 
-Propose supporting skills once, in one message (rules § 5): name, step, and a reason specific to this plan. For a planner the usual one is `design:ux-copy` when the plan writes user-facing copy. The planner does not run `security-review`; the risk tier in step 5 decides whether review needs it.
+Propose supporting skills once, in one message (rules § 5): name, step, and a reason specific to this plan. For a planner the usual ones are `design:ux-copy` when the plan writes user-facing copy, `dataviz` when the plan specifies a chart or KPI tile, and `design:design-critique` before a dashboard or summary-screen plan (limits in rules § 5). The planner does not run `security-review`; the risk tier in step 5 decides whether review needs it.
 
 ## 1. Orientation (read selectively)
 

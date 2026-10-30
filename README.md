@@ -67,17 +67,23 @@ The source of truth is [`references/workflow-rules.md` § 5](plugins/dev-nika-wo
 | Role | Skill | When |
 |---|---|---|
 | Plan | `design:ux-copy` | The plan writes user-facing copy (labels, errors, empty states, confirmations) |
+| Plan | `dataviz` | The plan specifies a chart, KPI tile or other data visualization |
+| Plan | `design:design-critique` | Before a dashboard or summary-screen plan |
 | Implement | `superpowers:test-driven-development` | Bug fixes, regression tests that must fail first, security acceptance criteria |
 | Implement | `superpowers:systematic-debugging` | Mid-way, when a test fails and the root cause is unclear after one check |
 | Implement | `superpowers:verification-before-completion` | Before claiming gate 2 (Implementation done) |
 | Implement | `code-review` | Before hand-off, for tier B plans and tier C changes |
+| Implement | `dataviz` | Before writing chart or KPI-tile code |
 | Review | `code-review` | First pass for tier A (tier B: the implementer already ran it); level chosen from size and risk |
 | Review | `security-review` | Tier A, or a B plan raised to A because the range touches tier A areas |
 | Review | `design:accessibility-review` | The range changes screens or interactive components |
+| Review | `design:design-critique` | The range adds or reworks a dashboard or information-dense screen |
 | QA | `design:accessibility-review` | UI scenarios |
 | QA | `design:ux-copy` | Scenarios with user-facing copy |
 | QA | `superpowers:verification-before-completion` | Before claiming QA passed |
 | QA | `superpowers:systematic-debugging` | Mid-way, when a scenario fails and the root cause is unclear |
+
+For `dataviz` and `design:design-critique`, the project's design system always wins: the skill's own palette is not used, and critique grades are translated into the review's severity scale ([rules § 5](plugins/dev-nika-workflow/references/workflow-rules.md#5-supporting-skills-only-with-user-approval)).
 
 The lead proposes no supporting skills of its own; each dispatched session proposes its own.
 
@@ -89,7 +95,7 @@ Dev-Nika-Workflow does **not** bundle any of these skills. Checked on the comput
 |---|---|---|
 | `superpowers:*` | The **Superpowers** plugin (`superpowers`) | Installed as `superpowers@synced`, i.e. synced from claude.ai (Anthropic Directory). No CLI marketplace name was shown, so no install command is given here: find it in the Anthropic Directory on claude.ai or with `/plugin` in Claude Code. |
 | `design:*` | The **Design** plugin (`design`) | Installed as `design@synced`, same as above. |
-| `code-review`, `security-review` | Built into Claude Code (no plugin) | Present without a namespace in the session's skill list. |
+| `code-review`, `security-review`, `dataviz` | Built into Claude Code (no plugin) | Present without a namespace in the session's skill list (`dataviz` is loaded from Claude Code's bundled skills, seen in 2.1.309). |
 
 Do not confuse the built-in `code-review` with `engineering:code-review` from the Engineering plugin; Dev-Nika-Workflow means the built-in one.
 
@@ -130,7 +136,7 @@ To have a project offer the plugin to everyone who opens it, declare the marketp
 
 ## Updates and versions
 
-`plugins/dev-nika-workflow/.claude-plugin/plugin.json` has a `version` (currently `0.1.0`). Installed copies stay on the cached version until that number changes, so **every release must bump `version`** (semver: patch for wording fixes, minor for new rules or skills, major for changes that break existing project configs). Pushing commits without a bump does not reach users.
+`plugins/dev-nika-workflow/.claude-plugin/plugin.json` has a `version` (currently `0.2.0`). Installed copies stay on the cached version until that number changes, so **every release must bump `version`** (semver: patch for wording fixes, minor for new rules or skills, major for changes that break existing project configs). Pushing commits without a bump does not reach users.
 
 To pick up a new release:
 

@@ -1,7 +1,7 @@
 {
   "name": "dev-nika-workflow",
   "displayName": "Dev-Nika-Workflow",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Multi-role development workflow: a team lead coordinates, a planner writes plans and contracts, an implementer builds with per-plan permission, an independent reviewer reviews, and QA verifies. Configured per project through .claude/workflow.md.",
   "author": {
     "name": "Zulfan Ahmadi"

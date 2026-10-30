@@ -84,6 +84,15 @@ Default candidates:
 | `superpowers:verification-before-completion` | Implementer, before claiming gate 2 or 4 | Every hand-off to review and every QA-passed claim |
 | `design:accessibility-review` | QA, reviewer for UI | The plan changes screens, forms, navigation or interactive components |
 | `design:ux-copy` | Planner (copy in the plan), QA | The plan adds or changes user-facing text |
+| `dataviz` | Planner (chart or KPI form in the plan), implementer (before writing chart code) | The plan adds or changes a chart, KPI/stat tile or other data visualization |
+| `design:design-critique` | Planner (before a dashboard or summary-screen plan), reviewer for UI | The plan adds or reworks a dashboard, overview page or information-dense layout |
+
+Limits for the two design skills above:
+
+- The project's UI authority (config § Area-specific reading, UI row) stays the authority. `dataviz` contributes the method only (form choice, mark specs, hover, the palette validator). Every palette parameter (categorical order, sequential and diverging ramps, status colors, surfaces) comes from the project's design system; the skill's reference palette and status colors are not used. If they conflict, the design system wins.
+- Run the `dataviz` palette validator with the project's runtime (config § Commands). Record its result in the plan or QA results; don't add it as a new file in the repository.
+- Data covered by config § Non-negotiable rules (for example encrypted or confidential fields) is never charted or aggregated.
+- `design:design-critique` output is input, not a verdict. The planner turns it into the plan, the reviewer into the review file with the review template's severity scale; its 🔴/🟡/🟢 grades never replace a review verdict. Mockups for critique are made outside the repository (an artifact or a temporary file), not as prototypes in the repo.
 
 Not used with Dev-Nika-Workflow, because their flow conflicts with plan files, role separation and these git rules: `superpowers:brainstorming`, `superpowers:writing-plans`, `superpowers:executing-plans`, `superpowers:subagent-driven-development`, `superpowers:using-git-worktrees`, `superpowers:finishing-a-development-branch`, `superpowers:requesting-code-review`.
 
